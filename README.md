@@ -28,16 +28,6 @@ import django_admin_edit_mode.admin
 @admin.register(models.Respondent)
 class RespondentAdmin(django_admin_edit_mode.admin.EditModeAdminMixin,
                       admin.ModelAdmin):
-    inlines = (AnswerInline, )
     ...
     
-
-
-class AnswerInline(django_admin_edit_mode.admin.EditModeInlineAdminMixin,
-                admin.TabularInline):
-      ...
- 
-
 ```
-
-Don't forget to add the special mixin to all your inlines!

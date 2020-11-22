@@ -12,6 +12,16 @@ class EditModeAdminMixin(admin.ModelAdmin):
         extra_context['edit_mode'] = request.GET.get('edit_mode')
         return super().changeform_view(request, object_id, form_url, extra_context)
 
+    def get_inline_instances(self, request, obj=None):
+        def add_mixin(C):
+            return type(C.__name__, (EditModeInlineAdminMixin, C), {})
+        self.inlines  = [
+            add_mixin(c)
+            for c in self.inlines
+        ]
+        return  super().get_inline_instances(request, obj)
+
+
 
 class EditModeInlineAdminMixin(InlineModelAdmin):
 
