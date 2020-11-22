@@ -11,6 +11,7 @@ But despite this, sometimes you want to change the object. Then you can go to ed
 
 ## Installation
 
+* `pip install -e git+https://github.com/mihasK/djang-admin-edit-mode.git#egg=django_admin_edit_mode`
 * Add `'django_admin_edit_mode'` to `INSTALLED_APPS`, **before `'django.contrib.admin'`**. Order matters for template loading!
 * Install and add `'spurl'` to `INSTALLED_APPS`.
 * Check that `'APP_DIRS'` is `True` in `TEMPLATES` settings.
