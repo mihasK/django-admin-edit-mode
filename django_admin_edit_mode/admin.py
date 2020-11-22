@@ -14,7 +14,10 @@ class EditModeAdminMixin(admin.ModelAdmin):
 
     def get_inline_instances(self, request, obj=None):
         def add_mixin(C):
-            return type(C.__name__, (EditModeInlineAdminMixin, C), {})
+            if not issubclass(C, EditModeInlineAdminMixin):
+                return type(C.__name__ + '_EditMode', (EditModeInlineAdminMixin, C), {})
+            else:
+                return C
         self.inlines  = [
             add_mixin(c)
             for c in self.inlines
