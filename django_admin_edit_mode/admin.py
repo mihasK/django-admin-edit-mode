@@ -2,9 +2,13 @@ from django.contrib import admin
 from django.contrib.admin.options import InlineModelAdmin
 
 
+def _is_edit_mode(request):
+    # We need this restriction only on rendering of the page, so we check for request method is GET
+    return (request.method != 'GET') or request.GET.get('edit_mode')
+
 class EditModeAdminMixin(admin.ModelAdmin):
     def has_change_permission(self, request, obj=None):
-        return super().has_change_permission(request, obj) and request.GET.get('edit_mode')
+        return super().has_change_permission(request, obj) and _is_edit_mode(request)
 
     def changeform_view(self, request, object_id=None, form_url='', extra_context=None):
         extra_context = extra_context or dict()
@@ -28,11 +32,10 @@ class EditModeAdminMixin(admin.ModelAdmin):
 
 class _EditModeInlineAdminMixin(InlineModelAdmin):
 
-
     def has_change_permission(self, request, obj=None):
-        return super().has_change_permission(request, obj) and request.GET.get('edit_mode')
+        return super().has_change_permission(request, obj) and _is_edit_mode(request)
     #
     def has_add_permission(self, request, obj=None):
-        return super().has_add_permission(request, obj) and request.GET.get('edit_mode')
+        return super().has_add_permission(request, obj) and _is_edit_mode(request)
 
 
