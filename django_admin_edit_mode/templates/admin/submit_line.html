@@ -1,16 +1,11 @@
 {% extends "admin/submit_line.html" %}
 
-{% load i18n admin_urls %}
-{% load spurl %}
-
-
 
 {% block submit-row %}
 
     {% if edit_mode_exists and not edit_mode %}
 
-            <p class="deletelink-box">
-            <a href="{% spurl base=request.get_full_path add_query="edit_mode=1" %}" class="deletelink">{% trans "Go edit mode" %}</a></p>
+        {% include "admin/edit_mode_button.html" %}
 
     {% else %}
          {{ block.super }}

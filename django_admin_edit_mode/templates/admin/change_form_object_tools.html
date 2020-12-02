@@ -1,0 +1,24 @@
+{% extends "admin/change_form_object_tools.html" %}
+
+
+{% block object-tools-items %}
+
+    {% if edit_mode_exists and not edit_mode %}
+        <li>
+
+                {% include "admin/edit_mode_button.html" %}
+
+        </li>
+    {% else %}
+        <li>
+
+                {% include "admin/readonly_mode_button.html" %}
+
+        </li>
+    {% endif %}
+
+
+
+    {{ block.super }}
+
+{% endblock %}

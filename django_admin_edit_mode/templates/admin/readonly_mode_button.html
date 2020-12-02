@@ -1,0 +1,9 @@
+{% load spurl %}
+{% load i18n admin_urls %}
+
+
+
+<p class="deletelink-box">
+    <a href="{{ request.get_full_path | cut:"edit_mode=1" }}" class="deletelink">{% trans "Go readonly mode" %}</a>
+</p>
+

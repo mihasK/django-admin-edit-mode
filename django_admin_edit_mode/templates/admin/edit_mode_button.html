@@ -1,0 +1,9 @@
+{% load spurl %}
+{% load i18n admin_urls %}
+
+
+
+<p class="deletelink-box">
+    <a href="{% spurl base=request.get_full_path add_query="edit_mode=1" %}" class="deletelink">{% trans "Go edit mode" %}</a>
+</p>
+
