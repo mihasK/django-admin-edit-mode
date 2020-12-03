@@ -3,18 +3,21 @@
 
 {% block object-tools-items %}
 
-    {% if edit_mode_exists and not edit_mode %}
-        <li>
+    {% if edit_mode_exists %}
+        {% if not edit_mode %}
+            <li>
 
-                {% include "admin/edit_mode_button.html" %}
+                    {% include "admin/edit_mode_button.html" %}
 
-        </li>
-    {% else %}
-        <li>
+            </li>
+        {% else %}
+            <li>
 
-                {% include "admin/readonly_mode_button.html" %}
+                    {% include "admin/readonly_mode_button.html" %}
 
-        </li>
+            </li>
+        {% endif %}
+
     {% endif %}
 
 
