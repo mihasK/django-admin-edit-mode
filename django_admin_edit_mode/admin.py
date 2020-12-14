@@ -7,16 +7,23 @@ def _is_edit_mode(request):
     # Also we always allow adding of objects
     return (request.method != 'GET') \
         or request.GET.get('edit_mode') \
-        or request.path.rstrip('/').endswith('/add')
+           or is_add_object_page(request)
+
+
+def is_add_object_page(request):
+    return request.path.rstrip('/').endswith('/add')
+
 
 class EditModeAdminMixin(admin.ModelAdmin):
     def has_change_permission(self, request, obj=None):
         return super().has_change_permission(request, obj) and _is_edit_mode(request)
 
     def changeform_view(self, request, object_id=None, form_url='', extra_context=None):
-        extra_context = extra_context or dict()
-        extra_context['edit_mode_exists'] = True
-        extra_context['edit_mode'] = request.GET.get('edit_mode')
+
+        if not is_add_object_page(request):
+            extra_context = extra_context or dict()
+            extra_context['edit_mode_exists'] = True
+            extra_context['edit_mode'] = request.GET.get('edit_mode')
         return super().changeform_view(request, object_id, form_url, extra_context)
 
     def get_inline_instances(self, request, obj=None):
