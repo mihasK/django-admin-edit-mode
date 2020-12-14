@@ -4,7 +4,10 @@ from django.contrib.admin.options import InlineModelAdmin
 
 def _is_edit_mode(request):
     # We need this restriction only on rendering of the page, so we check for request method is GET
-    return (request.method != 'GET') or request.GET.get('edit_mode')
+    # Also we always allow adding of objects
+    return (request.method != 'GET') \
+        or request.GET.get('edit_mode') \
+        or request.path.rstrip('/').endswith('/add')
 
 class EditModeAdminMixin(admin.ModelAdmin):
     def has_change_permission(self, request, obj=None):
