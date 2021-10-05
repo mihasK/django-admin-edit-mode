@@ -18,7 +18,7 @@ class ConditionalListEditableAdminMixin(admin.ModelAdmin):
 
         request.GET._mutable = False
 
-        cl =  super(ConditionalListEditableAdmin, self).get_changelist_instance(request)
+        cl =  super(ConditionalListEditableAdminMixin, self).get_changelist_instance(request)
         
         cl.list_edit_mode_exist = True
         cl.is_list_edit_mode = is_list_edit_mode
@@ -28,7 +28,7 @@ class ConditionalListEditableAdminMixin(admin.ModelAdmin):
     def lookup_allowed(self, lookup, value):
         if lookup == 'list_edit_mode':
             return True
-        return super(ConditionalListEditableAdmin, self).lookup_allowed(lookup, value)
+        return super(ConditionalListEditableAdminMixin, self).lookup_allowed(lookup, value)
 
 
     @property
