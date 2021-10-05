@@ -16,7 +16,7 @@
       {% else %}
       <li>
         <p class="deletelink-box">
-          <a href="{{ request.get_full_path | cut:"list_edit_mode=1" }}" class="deletelink">{% trans "Go readonly mode" %}</a>
+          <a href="{{ spurl base=request.get_full_path remove_query_param="list_edit_mode" }}" class="deletelink">{% trans "Go readonly mode" %}</a>
         </p>
       </li>
     {% endif %}
