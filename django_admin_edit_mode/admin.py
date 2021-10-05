@@ -4,14 +4,14 @@ from django.contrib.admin.options import InlineModelAdmin
 
 def _is_edit_mode(request):
     # We need this restriction only on rendering of the page, so we check for request method is GET
-    # Also we always allow adding of objects
+    # Also we always allow adding of objects and changing lists, so ignoring if it's not a  change-obj page
     return (request.method != 'GET') \
         or request.GET.get('edit_mode') \
-           or is_add_object_page(request)
+           or not is_a_change_object_page(request)
 
 
-def is_add_object_page(request):
-    return request.path.rstrip('/').endswith('/add')
+def is_a_change_object_page(request):
+    return request.path.rstrip('/').endswith('/change')
 
 
 class EditModeAdminMixin(admin.ModelAdmin):
