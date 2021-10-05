@@ -1,0 +1,26 @@
+{% extends "admin/change_list.html" %}
+
+{% load spurl %}
+{% load i18n admin_urls %}
+
+
+{% block object-tools-items %}
+
+  {% if cl.list_edit_mode_exist %}
+    {% if not cl.is_list_edit_mode %}
+      <li>
+        <p class="deletelink-box">
+          <a href="{% spurl base=request.get_full_path add_query="list_edit_mode=1" %}" class="deletelink">{% trans "Go edit mode" %}</a>
+        </p>
+      </li>
+      {% else %}
+      <li>
+        <p class="deletelink-box">
+          <a href="{{ request.get_full_path | cut:"list_edit_mode=1" }}" class="deletelink">{% trans "Go readonly mode" %}</a>
+        </p>
+      </li>
+    {% endif %}
+
+  {% endif %}
+  {{ block.super }}
+{% endblock %}
