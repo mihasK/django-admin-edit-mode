@@ -20,7 +20,7 @@ class EditModeAdminMixin(admin.ModelAdmin):
 
     def changeform_view(self, request, object_id=None, form_url='', extra_context=None):
 
-        if not is_add_object_page(request):
+        if is_a_change_object_page(request):
             extra_context = extra_context or dict()
             extra_context['edit_mode_exists'] = True
             extra_context['edit_mode'] = request.GET.get('edit_mode')
