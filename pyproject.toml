@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "django-admin-edit-mode"
+version = "0.1.1"
+description = "Provides a possibility to open objects in django-admin in read-only mode by default, with a special button \"Go to edit mode\" to open the same change-object page in regular editable mode."
+authors = ["Your Name <you@example.com>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/mihasK/django-admin-edit-mode"
+repository = "https://github.com/mihasK/django-admin-edit-mode"
+
+[tool.poetry.dependencies]
+python = "~3"
+Django = ">=2"
+django-spurl = "0.6.7"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
