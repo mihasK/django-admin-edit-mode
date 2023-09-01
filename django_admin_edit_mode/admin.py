@@ -3,8 +3,8 @@ from django.contrib.admin.options import InlineModelAdmin
 
 
 def _is_edit_mode(request):
-    # We need this restriction only on rendering of the page, so we check for request method is GET
-    # Also we always allow adding of objects and changing lists, so ignoring if it's not a  change-obj page
+    # We need this restriction only on rendering of the page, so we check that request method is GET
+    # Also we always allow adding of objects and changing lists, so skipping if it's not a change-obj page
     return (request.method != 'GET') \
         or request.GET.get('edit_mode') \
            or not is_a_change_object_page(request)
@@ -44,7 +44,7 @@ class _EditModeInlineAdminMixin(InlineModelAdmin):
 
     def has_change_permission(self, request, obj=None):
         return super().has_change_permission(request, obj) and _is_edit_mode(request)
-    #
+    
     def has_add_permission(self, request, obj=None):
         return super().has_add_permission(request, obj) and _is_edit_mode(request)
 

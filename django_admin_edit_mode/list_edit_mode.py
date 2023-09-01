@@ -6,7 +6,7 @@ class ConditionalListEditableAdminMixin(admin.ModelAdmin):
  
     def get_changelist_instance(self, request):
         """
-        override admin method and list_editable property value 
+        Changes list_editable property value depending on list_edit_mode *(on/off)
         """
         request.GET._mutable = True
         if not request.GET.pop('list_edit_mode', None):
