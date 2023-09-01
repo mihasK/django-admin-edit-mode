@@ -1,17 +1,19 @@
-# djang-admin-edit-mode
+# django-admin-edit-mode
+![PyPI - Version](https://img.shields.io/pypi/v/django-admin-edit-mode)
 
-The intention of this library is provide a possibility to open objects in django-admin in read-only mode by default,
+
+Allows to open objects in django admin in read-only mode by default,
 with a special button "Go to edit mode" to open the same change-object page in regular editable mode.
 
-Why read-only mode in the beginning is needed ? For some applications, django-admin serves mostly for reading the info.
-Readonly mode looks better, doesn't allow to make some changes accidentially, and the page loads quicker (no need to load a list of choices for the fields).
-
-But despite this, sometimes you want to change the object. Then you can go to edit mode!
+Why read-only mode by default is needed ? For some applications, django-admin serves mostly for reading the info.
+**Readonly mode page looks better (cleaner)**, doesn't allow to make some changes accidentially, and the **page loads quicker** (e.g., no need to load a list of choices for the fields).
+But you're not going to make admin completely readonly (e.g., by persmissions), because **sometimes you still want to change** the object.
+Then you can **go to edit mode by clicking the button**!
 
 
 ## Installation
 
-* `pip install -e git+https://github.com/mihasK/djang-admin-edit-mode.git#egg=django_admin_edit_mode`
+* `pip install django-admin-edit-mode`
 * Add `'django_admin_edit_mode'` to `INSTALLED_APPS`, **before `'django.contrib.admin'`**. Order matters for template loading!
 * Install and add `'spurl'` to `INSTALLED_APPS`.
 * Check that `'APP_DIRS'` is `True` in `TEMPLATES` settings.
