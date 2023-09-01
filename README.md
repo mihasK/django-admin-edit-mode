@@ -20,7 +20,7 @@ Important note: your editable field should not serve as a link to the object, i.
 
 * `pip install django-admin-edit-mode`
 * Add `'django_admin_edit_mode'` to `INSTALLED_APPS`, **before `'django.contrib.admin'`**. Order matters for template loading!
-* Install and add `'spurl'` to `INSTALLED_APPS`.
+* Add `'spurl'` to `INSTALLED_APPS`.
 * Check that `'APP_DIRS'` is `True` in `TEMPLATES` settings.
 
 
