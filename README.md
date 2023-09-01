@@ -1,7 +1,5 @@
 # django-admin-edit-mode
-![PyPI - Version](https://img.shields.io/pypi/v/django-admin-edit-mode?label=django-admin-edit-mode&link=https%3A%2F%2Fpypi.org%2Fproject%2Fdjango-admin-edit-mode%2F)
-
-
+[![PyPI - Version](https://img.shields.io/pypi/v/django-admin-edit-mode?label=django-admin-edit-mode&link=https%3A%2F%2Fpypi.org%2Fproject%2Fdjango-admin-edit-mode%2F)](https://pypi.org/project/django-admin-edit-mode/)
 
 Allows to open objects in django admin in read-only mode by default,
 with a special button "Go to edit mode" to open the same change-object page in regular editable mode.
